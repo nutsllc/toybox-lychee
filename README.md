@@ -41,6 +41,8 @@ mariadb:
 		- "3306"
 ```
 
+and then, access from web browser to ``http://<Hostname(IP Address)>:8080`` and sign-in with initial account. username: ``toybox`` password: ``toybox``
+
 ## Contributing
 
 We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/nutsllc/toybox-lychee/issues), or submit a [pull request](https://github.com/nutsllc/toybox-lychee/pulls) with your contribution.
