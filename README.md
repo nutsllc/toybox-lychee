@@ -1,6 +1,6 @@
 # Lychee on Docker
 
-A Dockerfile for deploying a Lychee which is a web based photo-management tool using Docker container.
+A Dockerfile for deploying a [Lychee](https://lychee.electerious.com/) which is a web based photo-management tool using Docker container.
 
 This image is registered to the [Docker Hub](https://hub.docker.com/r/nutsllc/toybox-lychee/) which is the official docker image registory.
 
@@ -8,7 +8,8 @@ This image is registered to the [Docker Hub](https://hub.docker.com/r/nutsllc/to
 
 >Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
 
-[Lychee official site](https://lychee.electerious.com/) | [Live Demo](http://ld.electerious.com/)
+* [Lychee official site](https://lychee.electerious.com/)
+* [Lychee Live Demo](http://ld.electerious.com/)
 
 ## Docker Compose example
 
@@ -42,6 +43,10 @@ mariadb:
 ```
 
 and then, access from web browser to ``http://<Hostname(IP Address)>:8080`` and sign-in with initial account. username: ``toybox`` password: ``toybox``
+
+## License
+
+* [Lychee](https://lychee.electerious.com/) MIT
 
 ## Contributing
 
