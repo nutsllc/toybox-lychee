@@ -8,10 +8,14 @@ This image is registered to the [Docker Hub](https://hub.docker.com/r/nutsllc/to
 
 >Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
 
-* [Lychee official site](https://lychee.electerious.com/)
-* [Lychee Live Demo](http://ld.electerious.com/)
+* [official site](https://lychee.electerious.com/)
+* [official live Demo](http://ld.electerious.com/)
 
 ## Docker Compose example
+
+Lychee needs to have a database at backend to store photo data, meta data and so on. So you must define two containers. One is the Lychee container another one is the MySQL（MariaDB）container.
+
+Example is below.
 
 ```
 lychee:
@@ -23,7 +27,8 @@ lychee:
 		- "./.data/uploads/big:/uploads/big"
 		- "./.data/uploads/medium:/uploads/medium"
 		- "./.data/uploads/thumb:/uploads/thumb"
-		- "./.data/uploads/import:/uploads/import"	ports:
+		- "./.data/uploads/import:/uploads/import"
+	ports:
 		- "8080:80"
 
 mariadb:
@@ -42,11 +47,11 @@ mariadb:
 		- "3306"
 ```
 
-and then, access from web browser to ``http://<Hostname(IP Address)>:8080`` and sign-in with initial account. username: ``toybox`` password: ``toybox``
+Open your web browser and access to ``http://<Hostname(IP Address)>:8080``. Then sign-in with initial account. username: ``toybox`` password: ``toybox``
 
 ## License
 
-* [Lychee](https://lychee.electerious.com/) MIT
+* Lychee - MIT
 
 ## Contributing
 
