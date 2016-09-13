@@ -4,6 +4,8 @@ A Dockerfile for deploying a [Lychee](https://lychee.electerious.com/) which is 
 
 This image is registered to the [Docker Hub](https://hub.docker.com/r/nutsllc/toybox-lychee/) which is the official docker image registory.
 
+In addition, this image is compatible with [ToyBox](https://github.com/nutsllc/toybox) complytely to manage the applications on Docker.
+
 ## What is the Lychee
 
 >Lychee is a free photo-management tool, which runs on your server or web-space. Installing is a matter of seconds. Upload, manage and share photos like from a native application. Lychee comes with everything you need and all your photos are stored securely.
