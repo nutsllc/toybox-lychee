@@ -49,7 +49,9 @@ mariadb:
 		- "3306"
 ```
 
-Open your web browser and access to ``http://<Hostname(IP Address)>:8080``. Then sign-in with initial account. username: ``toybox`` password: ``toybox``
+Open your web browser and access to ``http://<Hostname(IP Address)>:8080``. Then sign-in with initial account. username: ``lychee`` password: ``lychee``
+
+NOTECE: When you run this for the first time, you have to wait for initializig database.
 
 ## License
 
