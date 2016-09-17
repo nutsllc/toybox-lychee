@@ -13,6 +13,29 @@ In addition, this image is compatible with [ToyBox](https://github.com/nutsllc/t
 * [official site](https://lychee.electerious.com/)
 * [official live Demo](http://ld.electerious.com/)
 
+## Environment variables
+
+### DB_HOST
+
+This variable is required and specifies a host name or a IP address of the database that will be stored image data and so on.
+
+### DB_USER
+
+This variable is required and specifies a username to connect to a database.
+
+### DB_PASSWORD
+
+This variable is required and specifies a password to connect to a database.
+
+### DB_NAME
+
+This variable is required and specifies a name of a database.
+
+### DB_TABLE_PREFIX
+
+This variable is optional and allows you to specify prefix of tables in a database.
+
+
 ## Docker Compose example
 
 Lychee needs to have a database at backend to store photo data, meta data and so on. So you must define two containers. One is the Lychee container another one is the MySQL（MariaDB）container.
@@ -23,12 +46,12 @@ Example is below.
 lychee:
 	image: nutsllc/toybox-lychee:3.1.2
     links:
-        - mariadb:mariadb
+        - mariadb
     environment:
         - DB_HOST=mariadb
-        - DB_USER=lychee
-        - DB_PASSWORD=lychee
-        - DB_NAME=lychee
+        - DB_NAME=lychee_db
+        - DB_USER=lychee_user
+        - DB_PASSWORD=lychee_pass
         - TOYBOX_UID=1000
         - TOYBOX_GID=1000
     volumes:
@@ -46,9 +69,9 @@ mariadb:
         - "./.data/mysql:/var/lib/mysql"
     environment:
         - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=lychee
-        - MYSQL_USER=lychee
-        - MYSQL_PASSWORD=lychee
+        - MYSQL_DATABASE=lychee_db
+        - MYSQL_USER=lychee_user
+        - MYSQL_PASSWORD=lychee_pass
         - TOYBOX_UID=1000
         - TOYBOX_GID=1000
         - TERM=xterm
