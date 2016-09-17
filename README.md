@@ -22,31 +22,38 @@ Example is below.
 ```
 lychee:
 	image: nutsllc/toybox-lychee:3.1.2
-	links:
-		- mariadb:mariadb
-	volumes:
-		- "./.data:/data"
-		- "./.data/uploads/big:/uploads/big"
-		- "./.data/uploads/medium:/uploads/medium"
-		- "./.data/uploads/thumb:/uploads/thumb"
-		- "./.data/uploads/import:/uploads/import"
-	ports:
-		- "8080:80"
+    links:
+        - mariadb:mariadb
+    environment:
+        - DB_HOST=mariadb
+        - DB_USER=lychee
+        - DB_PASSWORD=lychee
+        - DB_NAME=lychee
+        - TOYBOX_UID=1000
+        - TOYBOX_GID=1000
+    volumes:
+        - "./.data:/data"
+        - "./.data/uploads/big:/uploads/big"
+        - "./.data/uploads/medium:/uploads/medium"
+        - "./.data/uploads/thumb:/uploads/thumb"
+        - "./.data/uploads/import:/uploads/import"
+    ports:
+        - "8080:80"
 
 mariadb:
-	image: nutsllc/toybox-mariadb:10.1.14
-	volumes:
-		- "./.data/mysql:/var/lib/mysql"
-	environment:
-		MYSQL_ROOT_PASSWORD: root
-		MYSQL_DATABASE: lychee
-		MYSQL_USER: lychee
-		MYSQL_PASSWORD: lychee
-		TOYBOX_UID: 1000
-		TOYBOX_GID: 1000
-		TERM: xterm
-	ports:
-		- "3306"
+    image: nutsllc/toybox-mariadb:10.1.14
+    volumes:
+        - "./.data/mysql:/var/lib/mysql"
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=lychee
+        - MYSQL_USER=lychee
+        - MYSQL_PASSWORD=lychee
+        - TOYBOX_UID=1000
+        - TOYBOX_GID=1000
+        - TERM=xterm
+    ports:
+        - "3306"
 ```
 
 Open your web browser and access to ``http://<Hostname(IP Address)>:8080``. Then sign-in with initial account. username: ``lychee`` password: ``lychee``

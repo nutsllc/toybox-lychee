@@ -17,20 +17,17 @@ fi
 docroot="/var/www/html"
 config="${docroot}/data/config.php"
 
-if [ -f ${config} ]; then
-    rm -rf ${config}
-fi
-
-echo "<?php" >> ${config}
-echo "" >> ${config}
-echo "// Database configuration" >> ${config}
-echo '$dbHost = '"'${MARIADB_PORT_3306_TCP_ADDR}'; // Host of the database" >> ${config}
-echo '$dbUser = '"'${MARIADB_ENV_MYSQL_USER}'; // Username of the database" >> ${config}
-echo '$dbPassword = '"'${MARIADB_ENV_MYSQL_PASSWORD}'; // Password of the database" >> ${config}
-echo '$dbName = '"'${MARIADB_ENV_MYSQL_DATABASE}'; // Database name" >> ${config}
-echo '$dbTablePrefix = '"''; // Table prefix" >> ${config}
-echo "" >> ${config}
-echo "?>" >> ${config}
+{
+    echo "<?php"
+    echo "// Database configuration"
+    echo '$dbHost = '"'${DB_HOST:=mysql}';"
+    echo '$dbUser = '"'${DB_USER:=lychee}';"
+    echo '$dbPassword = '"'${DB_PASSWORD:=lychee}';"
+    echo '$dbName = '"'${DB_NAME:=lychee}';"
+    echo '$dbTablePrefix = '"'${DB_PREFIX}';"
+    echo ""
+    echo "?>"
+} > ${config}
 
 chown -R ${user}:${group} ${docroot}
 
