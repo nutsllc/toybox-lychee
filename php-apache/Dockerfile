@@ -2,17 +2,19 @@ FROM php:7.0.7-apache
 #FROM php:5.6.22-apache
 MAINTAINER NutsProject, LLC <dev@nutsproject.co.jp>
 
-## ------------------------------------------------------------------------------
-## Install base
-#RUN install -yq fontconfig-config fonts-dejavu-core \
-#    psmisc ssl-cert ufw php-pear
-
 # ------------------------------------------------------------------------------
 # Install base
-RUN apt-get update \
-    && apt-get install -y git unzip wget \
-    libmcrypt-dev mcrypt libpng12-dev libjpeg-dev libgd-tools \
-    && rm -rf /var/lib/apt/lists/* \
+# ------------------------------------------------------------------------------
+RUN apt-get update && apt-get install -y \
+        git \
+        unzip \
+        wget \
+        libmcrypt-dev \
+        mcrypt \
+        libpng12-dev \
+        libjpeg-dev \
+        libgd-tools \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install exif gd json mbstring mysqli zip mcrypt opcache
 
@@ -46,7 +48,7 @@ RUN git clone https://github.com/electerious/Lychee.git html \
 # ------------------------------------------------------------------------------
 EXPOSE 80
 
-WORKDIR /
+WORKDIR /var/www/html
 RUN ln -s /var/www/html/uploads uploads \
     && ln -s /var/www/html/data data
 
