@@ -24,7 +24,7 @@ config="${docroot}/data/config.php"
     echo '$dbUser = '"'${DB_USER:=lychee}';"
     echo '$dbPassword = '"'${DB_PASSWORD:=lychee}';"
     echo '$dbName = '"'${DB_NAME:=lychee}';"
-    echo '$dbTablePrefix = '"'${DB_PREFIX}';"
+    echo '$dbTablePrefix = '"'${DB_TABLE_PREFIX}';"
     echo ""
     echo "?>"
 } > ${config}
