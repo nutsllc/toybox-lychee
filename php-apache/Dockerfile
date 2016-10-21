@@ -14,7 +14,8 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
         libjpeg-dev \
         libgd-tools \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install exif gd json mbstring mysqli zip mcrypt opcache
 
@@ -40,6 +41,7 @@ RUN { \
 
 # ------------------------------------------------------------------------------
 # Install Lychee
+# ------------------------------------------------------------------------------
 WORKDIR /var/www
 RUN git clone https://github.com/electerious/Lychee.git html \
     && chown -R www-data:www-data /var/www/html \
