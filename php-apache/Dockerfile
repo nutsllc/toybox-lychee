@@ -14,8 +14,11 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
         libjpeg-dev \
         libgd-tools \
+        libmagickwand-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
+    && yes | pecl install imagick \
+    && docker-php-ext-enable imagick \
 	&& docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
     && docker-php-ext-install exif gd json mbstring mysqli zip mcrypt opcache
 
@@ -59,5 +62,3 @@ VOLUME /data
 
 COPY docker-entrypoint.sh /entrypoint-ex.sh
 
-ENTRYPOINT ["/entrypoint-ex.sh"]
-CMD ["apache2-foreground"]
