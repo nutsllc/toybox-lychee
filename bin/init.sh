@@ -4,8 +4,8 @@ self=$(cd $(dirname $0);pwd)
 dist=${self}/..
 
 dirs=(
-    "${dist}/3.1.4/apache-php5.6"
-    "${dist}/3.1.4/apache-php7.0"
+    "${dist}/3.1.5/apache-php5.6"
+    "${dist}/3.1.5/apache-php7.0"
 )
 for d in ${dirs[@]}; do
     src=${self}/../seed
