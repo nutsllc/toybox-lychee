@@ -1,7 +1,7 @@
-FROM php:7.0-apache
+FROM php:5.6-apache
 MAINTAINER NutsProject, LLC <dev@nutsproject.co.jp>
 
-ENV LYCHEE_VERSION=3.1.5
+ENV LYCHEE_VERSION=3.1.4
 
 RUN apt-get update && apt-get install -y \
         unzip \

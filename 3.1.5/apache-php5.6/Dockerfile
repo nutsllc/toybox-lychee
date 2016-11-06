@@ -1,8 +1,9 @@
 FROM php:5.6-apache
 MAINTAINER NutsProject, LLC <dev@nutsproject.co.jp>
 
+ENV LYCHEE_VERSION=3.1.5
+
 RUN apt-get update && apt-get install -y \
-        git \
         unzip \
         wget \
         libmcrypt-dev \
@@ -32,12 +33,15 @@ RUN apt-get update && apt-get install -y \
 		echo 'opcache.fast_shutdown=1'; \
 		echo 'opcache.enable_cli=1'; \
 	} > /usr/local/etc/php/conf.d/opcache-recommended.ini \
-    && cd /var/www \
-    && git clone https://github.com/electerious/Lychee.git html \
+    && wget -O /var/www/${LYCHEE_VERSION}.tar.gz https://github.com/electerious/Lychee/archive/v${LYCHEE_VERSION}.tar.gz \
+    && tar xzf /var/www/${LYCHEE_VERSION}.tar.gz -C /var/www \
+    && rm -rf /var/www/html \
+    && rm -rf /var/www/html/${LYCHEE_VERSION}.tar.gz \
+    && mv /var/www/Lychee-${LYCHEE_VERSION} /var/www/html \
     && chown -R www-data:www-data /var/www/html \
-    && chmod -R 777 html/data/ html/uploads/ \
-    && ln -s /var/www/html/uploads uploads \
-    && ln -s /var/www/html/data data
+    && chmod -R 777 /var/www/html/data /var/www/html/uploads \
+    && ln -s /var/www/html/uploads /uploads \
+    && ln -s /var/www/html/data /data
 
 VOLUME /uploads
 VOLUME /data
